@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "nodemon --exec ts-node src/server.ts",
     "dev": "nodemon src/server.ts",
     "build": "tsc -p ."
   },
@@ -20,8 +20,10 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
+    "@types/pg": "^7.11.2",
     "cors": "^2.8.5",
     "mysql": "^2.17.1",
+    "pg": "^7.12.1",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.20"
   }

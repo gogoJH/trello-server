@@ -1,15 +1,13 @@
-import { createConnection, Connection } from "typeorm";
+import "reflect-metadata";
+import { createConnection } from "typeorm";
 
-class DB_CONNECT {
-  public async connection() {
+export const ORMConnect = () => {
+  createConnection().then(async () => {
+    // connection not used?
     try {
-      const db: Connection = await createConnection();
-      console.log("connect mysql DB");
-      return db;
+      console.log("TypeORM Start");
     } catch (e) {
       throw new Error(e);
     }
-  }
-}
-
-export default new DB_CONNECT();
+  });
+};

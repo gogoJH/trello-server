@@ -5,8 +5,8 @@ import card from "./cards";
 
 const router = express.Router();
 
-router.use("./boards", boards);
-router.use("./cards", card);
-router.use("./list", list);
+router.use("/boards", boards);
+router.use("/cards", card);
+router.use("/list", list);
 
 export = router;

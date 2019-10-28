@@ -3,11 +3,13 @@ import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from "typeorm";
 @Entity()
 export class Boards extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  public id: number;
 
   @Column()
-  user_id: number;
+  public user_id: number;
 
   @Column()
-  title: string;
+  public title: string;
 }
+
+export default Boards;
