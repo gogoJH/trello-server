@@ -1,12 +1,12 @@
 import express, { Request, Response, NextFunction, request } from "express";
 import "reflect-metadata";
-import { ORMConnect } from "./common/dbc";
+import { DB_Connect } from "./common/dbc";
 import cors from "cors";
 import router from "./api/index";
 
 const app = express();
 
-ORMConnect();
+DB_Connect();
 
 app.use(cors({ credentials: true }));
 app.use(express.json({ limit: "50mb" }));
