@@ -1,11 +1,16 @@
 import { Request, Response } from "express";
 import "reflect-metadata";
 import { getRepository, createQueryBuilder, Any } from "typeorm";
-// import { boards } from "../entity/Boards";
+import { Boards } from "../entity/Boards";
 
 export = {
   getBoards: async (req: Request, res: Response) => {
-    console.log("여기 왔다.");
-    res.json("성공");
+    try {
+      const boards = await getRepository(Boards).find();
+      res.json(boards);
+    } catch (e) {
+      res.status(404).json({ message: e.message });
+      throw new Error(e);
+    }
   }
 };
