@@ -8,7 +8,7 @@ export = {
     try {
       console.log("여기옴");
       const boards = await getRepository(Boards).find();
-      res.send(boards);
+      res.json(boards);
     } catch (e) {
       res.status(404).json({ message: e.message });
       throw new Error(e);
