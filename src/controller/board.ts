@@ -21,6 +21,9 @@ export = {
       const cards = await getRepository(Boards).findOne(1, { relations: ["cards"] });
       console.log(cards);
       res.json(cards);
-    } catch (e) {}
+    } catch (e) {
+      res.status(404).json({ message: e.message });
+      throw new Error(e);
+    }
   }
 };
