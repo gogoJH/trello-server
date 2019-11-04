@@ -17,6 +17,7 @@ export = {
 
   getCards: async (req: Request, res: Response) => {
     try {
+      console.log("여기");
       const cards = await getRepository(Boards).findOne(1, { relations: ["cards"] });
       res.json(cards);
     } catch (e) {}
