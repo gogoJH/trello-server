@@ -13,5 +13,11 @@ export = {
       res.status(404).json({ message: e.message });
       throw new Error(e);
     }
+  },
+
+  getCards: async (req: Request, res: Response) => {
+    try {
+      const cards = await getRepository(Boards).findOne(1, { relations: ["cards"] });
+    } catch (e) {}
   }
 };
