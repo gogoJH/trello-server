@@ -19,6 +19,7 @@ export = {
     try {
       console.log("여기");
       const cards = await getRepository(Boards).findOne(1, { relations: ["cards"] });
+      console.log(cards);
       res.json(cards);
     } catch (e) {}
   }
