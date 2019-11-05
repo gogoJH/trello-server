@@ -1,4 +1,5 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Cards } from "./Cards";
 
 @Entity()
 export class List extends BaseEntity {
@@ -6,8 +7,8 @@ export class List extends BaseEntity {
   id: number;
 
   @Column()
-  card_id: number;
-
-  @Column()
   title: string;
+
+  @ManyToOne(type => Cards, cards => cards.list)
+  cards: Cards;
 }

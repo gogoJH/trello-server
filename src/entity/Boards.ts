@@ -12,7 +12,7 @@ export class Boards extends BaseEntity {
   @Column()
   public title: string;
 
-  @OneToMany(type => Cards, cards => cards.board_id)
+  @OneToMany(type => Cards, cards => cards.boards)
   cards: Cards[];
 }
 

@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import "reflect-metadata";
-import { getRepository, createQueryBuilder, Any } from "typeorm";
+import { getRepository } from "typeorm";
 import { Boards } from "../entity/Boards";
+import { Cards } from "../entity/Cards";
 
 export = {
   getBoards: async (req: Request, res: Response) => {
@@ -17,9 +18,16 @@ export = {
 
   getCards: async (req: Request, res: Response) => {
     try {
+      const id = req.query.boardId;
       console.log("여기");
-      const cards = await getRepository(Boards).findOne(1, { relations: ["cards"] });
+      const cards = await getRepository(Boards)
+        .createQueryBuilder("boards")
+        .leftJoinAndSelect("boards.cards", "cards")
+        .leftJoinAndSelect("cards.list", "list")
+        .getMany();
+
       console.log(cards);
+
       res.json(cards);
     } catch (e) {
       res.status(404).json({ message: e.message });
