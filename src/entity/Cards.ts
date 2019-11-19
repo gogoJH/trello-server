@@ -1,12 +1,4 @@
-import {
-  Entity,
-  BaseEntity,
-  PrimaryGeneratedColumn,
-  Column,
-  ManyToMany,
-  ManyToOne,
-  OneToMany
-} from "typeorm";
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm";
 import Boards from "./Boards";
 import { List } from "./List";
 
@@ -18,9 +10,15 @@ export class Cards extends BaseEntity {
   @Column()
   title: string;
 
-  @ManyToOne(type => Boards, boards => boards.cards)
+  @ManyToOne(
+    type => Boards,
+    boards => boards.cards
+  )
   boards: Boards;
 
-  @OneToMany(type => List, list => list.cards)
+  @OneToMany(
+    type => List,
+    list => list.cards
+  )
   list: List[];
 }

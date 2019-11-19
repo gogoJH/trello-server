@@ -4,3 +4,4 @@ secret/
 dist/
 ormconfig.json
 .env
+config.ts

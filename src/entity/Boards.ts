@@ -1,5 +1,13 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import {
+  Entity,
+  BaseEntity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  ManyToOne
+} from "typeorm";
 import { Cards } from "./Cards";
+import { Users } from "./Users";
 
 @Entity()
 export class Boards extends BaseEntity {
@@ -7,13 +15,19 @@ export class Boards extends BaseEntity {
   public id: number;
 
   @Column()
-  public user_id: number;
-
-  @Column()
   public title: string;
 
-  @OneToMany(type => Cards, cards => cards.boards)
+  @OneToMany(
+    type => Cards,
+    cards => cards.boards
+  )
   cards: Cards[];
+
+  @ManyToOne(
+    type => Users,
+    users => users.boards
+  )
+  users: Users;
 }
 
 export default Boards;
