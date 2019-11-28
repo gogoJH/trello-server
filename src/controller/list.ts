@@ -16,6 +16,7 @@ export = {
   },
 
   setList: async (req: Request, res: Response) => {
+    console.log("set");
     const { id, title } = req.body;
     await getRepository(List)
       .createQueryBuilder()
@@ -23,6 +24,8 @@ export = {
       .set({ title })
       .where("id=:id", { id })
       .execute();
+
+    res.json("ok");
   },
 
   addList: async (req: Request, res: Response) => {
